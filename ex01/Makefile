@@ -1,7 +1,7 @@
 NAME = span
 CXX = c++
 CFLAGS = -std=c++20 -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 O_DIR = objects
 

@@ -1,11 +1,11 @@
 #include "Span.hpp"
 
-Span::Span()
+Span::Span() : _N(0)
 {
 
 }
 
-Span::Span(unsigned int N): _span(NULL), _N(N)
+Span::Span(unsigned int N): _N(N)
 {
 
 }
@@ -22,30 +22,30 @@ Span&	Span::operator=(const Span& orig)
 		_span = orig._span;
 		_N = orig._N;
 	}
-	return (*this)
+	return (*this);
 }
 
 void	Span::insertNumbers(std::vector<int> numbers)
 {
-	if ((_span.size() + numbers.size()) > N)
+	if ((_span.size() + numbers.size()) > _N)
 	{
 		throw std::out_of_range("not enough space!");
 	}
 	else
 	{
-		_span.insert(span.end(), numbers.begin(), numbers.end());
+		_span.insert(_span.end(), numbers.begin(), numbers.end());
 	}
 }
 
 void	Span::addNumber(int num)
 {
-	if (_span.size() < N)
+	if (_span.size() < _N)
 		_span.push_back(num);
 	else
 		throw std::out_of_range("not enough space!");
 }
 
-unsigned int	shortestSpan()
+unsigned int	Span::shortestSpan()
 {
 	if (_span.empty() || _span.size() == 1)
 		std::out_of_range("not enough numbers!");
@@ -60,12 +60,12 @@ unsigned int	shortestSpan()
 	return (shortest);
 }
 
-unsigned int	longestSpan()
+unsigned int	Span::longestSpan()
 {
 	if (_span.empty() || _span.size() == 1)
 		std::out_of_range("not enough numbers!");
 	sort(_span.begin(), _span.end());
-	return *(_span.end() - 1) - _span.begin();
+	return *(_span.end() - 1) - *_span.begin();
 }
 
 Span::~Span()
