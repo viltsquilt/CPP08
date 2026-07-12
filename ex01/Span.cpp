@@ -47,12 +47,25 @@ void	Span::addNumber(int num)
 
 unsigned int	shortestSpan()
 {
-
+	if (_span.empty() || _span.size() == 1)
+		std::out_of_range("not enough numbers!");
+	sort(_span.begin(), _span.end());
+	unsigned int	shortest = std::numeric_limits<unsigned int>::max();
+	for (std::vector<int>::iterator it = _span.begin(); it + 1 != _span.end(); it++)
+	{
+		unsigned int	dif = *(it + 1) - *it;
+		if (dif < shortest)
+			shortest = dif;
+	}
+	return (shortest);
 }
 
 unsigned int	longestSpan()
 {
-
+	if (_span.empty() || _span.size() == 1)
+		std::out_of_range("not enough numbers!");
+	sort(_span.begin(), _span.end());
+	return *(_span.end() - 1) - _span.begin();
 }
 
 Span::~Span()
